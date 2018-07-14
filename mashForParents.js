@@ -11,7 +11,17 @@ Your favorite snack will be…
 
  */
 
-//this pure function will choose a random object from any array. It's resusable.
+
+ var childCountChoice;
+ var weightGainedChoice;
+ var fieldChoice;
+ var timeInFieldChoice;
+ var timeInCollegeChoice;
+ var carChoice;
+ var placeChoice;
+ var snackChoice;
+
+ //this pure function will choose a random object from any array. It's resusable.
 function randomFromArray(array) {
     const randomIndex = Math.random();
     const range = randomIndex * (array.length);
@@ -34,7 +44,6 @@ function mash() {
 }
 
 function getChildrenCount() {
-    const childCountChoice = process.argv[2];
     const randomChildCount = randomAnyRange(0,100);
     const possibleAmount = [randomChildCount];
         if (typeof childCountChoice !== 'undefined') {
@@ -46,7 +55,6 @@ function getChildrenCount() {
 
 
 function weightGained() {
-    const weightGainedChoice = process.argv[3];
     const randomWeightGained = randomAnyRange(0, 60);
     const possibleAmount = [randomWeightGained];
         if (typeof weightGainedChoice !== 'undefined') {
@@ -56,7 +64,6 @@ function weightGained() {
 }
 
 function fieldToEnter() {
-    const fieldChoice = process.argv[4];
     const possibleFields = ['Computers and Technology','Education and Social Services','Health Care and Allied Health', 'Arts and Communication','Trades and Transportation'];
         if (typeof fieldChoice !== 'undefined') {
             possibleFields.push(fieldChoice);
@@ -65,11 +72,10 @@ function fieldToEnter() {
 }
 
 function timeInField() {
-    const timeChoice = process.argv[5];
     const randomTimeInField = randomAnyRange(0, 35);
     const possibleTime = [randomTimeInField];
-        if (typeof timeChoice !== 'undefined') {
-            possibleAmount.push(timeChoice);
+        if (typeof timeInFieldChoice !== 'undefined') {
+            possibleAmount.push(timeInFieldChoice);
         }
     return randomFromArray(possibleTime);
     
@@ -80,17 +86,15 @@ function careerChangeAmount() {
 }
 
 function timeInCollege() {
-    const timeChoice = process.argv[6];
     const possibleTime = ['0', '4', '8', '12'];
         if (typeof timeChoice !== 'undefined') {
-            possibleAmount.push(timeChoice);
+            possibleAmount.push(timeInCollegeChoice);
         }
     return randomFromArray(possibleTime);
     
 }
 
 function getCar() {
-    const carChoice = process.argv[7];
     const possibleCar = ['lamborghini','ferrari','bugatti'];
         if (typeof carChoice !== 'undefined') {
             possibleCar.push(carChoice);
@@ -99,7 +103,6 @@ function getCar() {
 }
 
 function getHome() {
-    const homeChoice = process.argv[8];
     const homeType = ['Mansion','Apartment','Shack','House'];
         if (typeof homeChoice !== 'undefined') {
             homeType.push(homeChoice);
@@ -108,7 +111,6 @@ function getHome() {
 }
 
 function favoritePlaceToVisit() {
-    const placeChoice = process.argv[9];
     const possiblePlaces = ['movie theater', 'basketball court','park','beach','ice cream parlor'];
         if (typeof placeChoice !== 'undefined') {
             possiblePlaces.push(placeChoice);
@@ -117,7 +119,6 @@ function favoritePlaceToVisit() {
 }
 
 function favoriteSnack() {
-    const snackChoice = process.argv[10];
     const possibleSnacks = ['ice cream','licorice','pop tarts','waffles','chocolate chip cookies','hot chocolate'];
         if (snackChoice !== 'undefined') {
             possibleSnacks.push(snackChoice);
@@ -125,4 +126,122 @@ function favoriteSnack() {
     return randomFromArray(possibleSnacks);
 }
 
-console.log(mash());
+// console.log(mash());
+
+
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+ const question1 = () => {
+    return new Promise((resolve, reject) => {
+      rl.question('How many kids do you want? \n', (answer) => {
+        process.argv[2] = answer;
+        childCountChoice = process.argv[2];
+        resolve();
+      })
+    })
+  }
+  
+  const question2 = () => {
+    return new Promise((resolve, reject) => {
+      rl.question('How much weight would you like to gain by age 50? \n', (answer) => {
+        process.argv[3] = answer;
+        weightGainedChoice = process.argv[3];
+        resolve();
+      })
+    })
+  }
+
+  const question3 = () => {
+    return new Promise((resolve, reject) => {
+      rl.question('Which field would you like to enter? \n', (answer) => {
+        process.argv[4] = answer;
+        fieldChoice = process.argv[4];
+        resolve();
+      })
+    })
+  }
+
+  const question4 = () => {
+    return new Promise((resolve, reject) => {
+      rl.question('How long would you like to stay in a specific field? \n', (answer) => {
+        process.argv[5] = answer;
+        fieldChoice = process.argv[5];
+        resolve();
+      })
+    })
+  }
+
+  const question5 = () => {
+    return new Promise((resolve, reject) => {
+      rl.question('How long would you like to be in college? \n', (answer) => {
+        process.argv[6] = answer;
+        fieldChoice = process.argv[6];
+        resolve();
+      })
+    })
+  }
+  
+  const question6 = () => {
+    return new Promise((resolve, reject) => {
+      rl.question('What type of car do you wish to drive? \n', (answer) => {
+        process.argv[7] = answer;
+        fieldChoice = process.argv[7];
+        resolve();
+      })
+    })
+  }
+  
+  const question7 = () => {
+    return new Promise((resolve, reject) => {
+      rl.question('What is your favorite place to visit when you are bored? \n', (answer) => {
+        process.argv[8] = answer;
+        fieldChoice = process.argv[8];
+        resolve();
+      })
+    })
+  }
+
+  const question8 = () => {
+    return new Promise((resolve, reject) => {
+      rl.question('What is your favorite snack? \n', (answer) => {
+        process.argv[9] = answer;
+        fieldChoice = process.argv[9];
+        resolve();
+      })
+    })
+  }
+
+  const mash2 = () => {
+    return new Promise((resolve, reject) => {
+        console.log("You will have " + getChildrenCount() + " kids. " + "You will enter the field of " + fieldToEnter() + " for " + timeInField() + " years. " + "You will change careers " + careerChangeAmount() + " times. " + "You will drive a " + getCar() + ". You will live in a " + getHome() + ". Your favorite place to visit with your kids will be the " + favoritePlaceToVisit() + ". Your favorite snack will be " + favoriteSnack() + ".");
+        resolve();
+    })
+  }
+  
+
+
+
+  const main = async () => {
+    await question1();
+    await question2();
+    await question3();
+    await question5();
+    await question6();
+    await question8();
+    await mash2();
+
+    rl.close();
+  }
+  
+
+main();
+
+
+
+
+
