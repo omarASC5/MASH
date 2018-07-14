@@ -1,5 +1,5 @@
 function mash() {
-    return "You will live in a " + getHome() + " and you will have " + getChildrenCount() + " kids!";
+    return "You will live in a " + getHome() + " and you will have " + getChildrenCount() + " kids!" + ", and you'll drive a " + getCar();
 }
 
 //this pure function will choose a random object from any array. It's resusable.
@@ -29,7 +29,23 @@ function randomAnyRange(low, high) {
 }
 
 function getChildrenCount() {
-    return randomAnyRange(0,100);
+    const childCountChoice = process.argv[3];
+    const randomChildCount = randomAnyRange(0,100);
+    const possibleAmount = [randomChildCount];
+        if (typeof childCountChoice !== 'undefined') {
+             possibleAmount.push(childCountChoice);
+        }
+
+    return randomFromArray(possibleAmount);
+}
+
+function getCar() {
+    const carChoice = process.argv[4];
+    const possibleCar = ['lamborghini','ferrari','bugatti'];
+        if (typeof carChoice !== 'undefined') {
+            possibleCar.push(carChoice);
+        }
+        return randomFromArray(possibleCar);
 }
 
 console.log(mash());
