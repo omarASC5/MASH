@@ -170,7 +170,7 @@ const rl = readline.createInterface({
     return new Promise((resolve, reject) => {
       rl.question('How long would you like to stay in a specific field? \n', (answer) => {
         process.argv[5] = answer;
-        fieldChoice = process.argv[5];
+        timeInFieldChoice = process.argv[5];
         resolve();
       })
     })
@@ -180,7 +180,7 @@ const rl = readline.createInterface({
     return new Promise((resolve, reject) => {
       rl.question('How long would you like to be in college? \n', (answer) => {
         process.argv[6] = answer;
-        fieldChoice = process.argv[6];
+        timeInCollegeChoice = process.argv[6];
         resolve();
       })
     })
@@ -190,7 +190,7 @@ const rl = readline.createInterface({
     return new Promise((resolve, reject) => {
       rl.question('What type of car do you wish to drive? \n', (answer) => {
         process.argv[7] = answer;
-        fieldChoice = process.argv[7];
+        carChoice = process.argv[7];
         resolve();
       })
     })
@@ -200,7 +200,7 @@ const rl = readline.createInterface({
     return new Promise((resolve, reject) => {
       rl.question('What is your favorite place to visit when you are bored? \n', (answer) => {
         process.argv[8] = answer;
-        fieldChoice = process.argv[8];
+        placeChoice = process.argv[8];
         resolve();
       })
     })
@@ -210,7 +210,7 @@ const rl = readline.createInterface({
     return new Promise((resolve, reject) => {
       rl.question('What is your favorite snack? \n', (answer) => {
         process.argv[9] = answer;
-        fieldChoice = process.argv[9];
+        snackChoice = process.argv[9];
         resolve();
       })
     })
